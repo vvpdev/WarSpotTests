@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">TankTests</string>
+
+    <!--для заголовков активити -->
+    <string name="nameMainActivity">Тесты Warspot</string>
+
+    <!--меню в тулбаре -->
+    <string name="toolbar_settings">настройки</string>
+
+</resources>
