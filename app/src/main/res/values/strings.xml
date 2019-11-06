@@ -3,6 +3,7 @@
 
     <!--для заголовков активити -->
     <string name="nameMainActivity">Тесты Warspot</string>
+    <string name="nameSettingsActivity">Настройки</string>
 
     <!--меню в тулбаре -->
     <string name="toolbar_settings">настройки</string>
