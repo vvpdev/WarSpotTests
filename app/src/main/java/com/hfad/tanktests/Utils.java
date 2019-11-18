@@ -9,14 +9,19 @@ public class Utils {
     }
 
 
+        // названия таблиц должны соответствовать классам Entity
+
 
         public static final String DATE_BASE_NAME = "datebase";
-        public static final int DATE_BASE_VERSION = 2;
+        public static final int DATE_BASE_VERSION = 3;
 
         // таблица User
         public static final String TABLE_NAME_USERS = "user";
 
         // таблица Question
         public static final String TABLE_NAME_QUESTIONS = "question";
+
+        // таблица Question
+        public static final String TABLE_NAME_TEST = "test";
 
 }

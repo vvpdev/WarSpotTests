@@ -1,18 +1,21 @@
 package com.hfad.tanktests.Model;
 
 
-
-
         // класс для фонового потока заполнения таблицы с вопросами
 
 import com.hfad.tanktests.InputScreen.InputActivity;
 import com.hfad.tanktests.R;
 
-public class FillTableQuestions implements Runnable{
+public class FillDB implements Runnable{
 
 
     @Override
     public void run() {
+
+        //__________________________________________________________________________________________
+        //заполнение таблицы Question
+        //__________________________________________________________________________________________
+
 
         Question question1 = new Question();
         question1.id = 1;
@@ -52,9 +55,19 @@ public class FillTableQuestions implements Runnable{
 
         DateBase.getInstance(InputActivity.context).dao().insertQuestion(question3);
 
+
+
+
+        //__________________________________________________________________________________________
+        //заполнение таблицы Test
+        //__________________________________________________________________________________________
+
+        Test test1 = new Test();
+        test1.id = 1;
+        test1.name = "На заре танковой эры";
+        test1.picture = R.drawable.test1_cover;
+        test1.description = "Попробуйте по фотографиям идентифицировать 10 гусеничных боевых машин, созданных в годы Первой мировой войны, когда многие из них ещё здорово отличались от привычных нам танков.";
+
     }
-
-
-
 
 }

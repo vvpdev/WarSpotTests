@@ -11,7 +11,7 @@ import com.hfad.tanktests.Utils;
 
 // база данных
 
-@Database(entities = {User.class, Question.class}, version = Utils.DATE_BASE_VERSION, exportSchema = false)
+@Database(entities = {User.class, Question.class, Test.class}, version = Utils.DATE_BASE_VERSION, exportSchema = false)
 
     public abstract class DateBase extends RoomDatabase {
 
@@ -46,8 +46,8 @@ import com.hfad.tanktests.Utils;
                                             super.onCreate(db);
 
                                             // заполнение в фоне
-                                            FillTableQuestions fillTableQuestions = new FillTableQuestions();
-                                            Thread thread = new Thread(fillTableQuestions);
+                                            FillDB fillDB = new FillDB();
+                                            Thread thread = new Thread(fillDB);
                                             thread.start();
 
                                         }
