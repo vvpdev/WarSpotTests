@@ -1,11 +1,11 @@
 <resources>
-    <string name="app_name">TankTests</string>
+    <string name="app_name">Тесты WarSpot</string>
 
     <!--для заголовков активити -->
-    <string name="nameMainActivity">Тесты Warspot</string>
-    <string name="nameSettingsActivity">Настройки</string>
+    <string name="nameLoginActivity">Введите данные</string>
+    <string name="nameInputActivity">Вход</string>
+    <string name="nameMenuActivity">Меню</string>
+    <string name="nameRegisterActivity">Новый пользователь</string>
 
-    <!--меню в тулбаре -->
-    <string name="toolbar_settings">настройки</string>
 
 </resources>
