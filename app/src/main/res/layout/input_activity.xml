@@ -4,34 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".InputScreen.InputActivity">
+    tools:context=".activities.InputActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_margin="20dp"
-        android:orientation="vertical">
-
-        <Button
-            android:id="@+id/buttonToComeIn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="25dp"
-            android:onClick="onClick"
-            android:text="войти"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-
-        <Button
-            android:id="@+id/buttonToRegister"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:onClick="onClick"
-            android:text="зарегистрироваться"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-    </LinearLayout>
 </RelativeLayout>

@@ -1,4 +1,4 @@
-package com.hfad.tanktests;
+package com.hfad.tanktests.utils;
 
 
 // класс для хранения констант

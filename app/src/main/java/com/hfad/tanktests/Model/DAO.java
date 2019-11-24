@@ -9,14 +9,12 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.hfad.tanktests.Utils;
+import com.hfad.tanktests.utils.Utils;
 
 import java.util.List;
 
 @Dao
 public interface DAO {
-
-
 
     //_____________________________________________________________________________________________
     // для работы с таблицей User
@@ -63,5 +61,7 @@ public interface DAO {
     @Query("SELECT * FROM " + Utils.TABLE_NAME_TEST + " WHERE id = :id")
     Test getTestById(int id);
 
+    @Query("SELECT * FROM " + Utils.TABLE_NAME_TEST)
+    List <Test> getAllTest();
 
 }

@@ -3,11 +3,14 @@ package com.hfad.tanktests.Model;
 
         // класс для фонового потока заполнения таблицы с вопросами
 
-import com.hfad.tanktests.InputScreen.InputActivity;
+import android.util.Log;
+
 import com.hfad.tanktests.R;
+import com.hfad.tanktests.activities.InputActivity;
 
 public class FillDB implements Runnable{
 
+    // сохранение
 
     @Override
     public void run() {
@@ -15,7 +18,6 @@ public class FillDB implements Runnable{
         //__________________________________________________________________________________________
         //заполнение таблицы Question
         //__________________________________________________________________________________________
-
 
         Question question1 = new Question();
         question1.id = 1;
@@ -56,8 +58,6 @@ public class FillDB implements Runnable{
         DateBase.getInstance(InputActivity.context).dao().insertQuestion(question3);
 
 
-
-
         //__________________________________________________________________________________________
         //заполнение таблицы Test
         //__________________________________________________________________________________________
@@ -66,7 +66,13 @@ public class FillDB implements Runnable{
         test1.id = 1;
         test1.name = "На заре танковой эры";
         test1.picture = R.drawable.test1_cover;
-        test1.description = "Попробуйте по фотографиям идентифицировать 10 гусеничных боевых машин, созданных в годы Первой мировой войны, когда многие из них ещё здорово отличались от привычных нам танков.";
+        test1.description = "Попробуйте по фотографиям идентифицировать 10 гусеничных боевых машин, созданных в годы Первой мировой войны, когда многие из них ещё здорово отличались от привычных нам танков";
+
+        DateBase.getInstance(InputActivity.context).dao().insertTest(test1);
+
+        Log.i("kanistra", "БД заполнена! из FillDB класса");
+
+        Log.i("kanistra", "первый тест = " + DateBase.getInstance(InputActivity.context).dao().getTestById(1).name);
 
     }
 

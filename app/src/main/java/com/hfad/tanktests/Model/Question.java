@@ -13,20 +13,52 @@ public class Question {
 
 
     @PrimaryKey
-    int id;             // id самого вопроса
+    public int id;             // id самого вопроса
 
-    int id_Test;        // id теста, к оторому относится вопрос (для выборки)
+    public int id_Test;        // id теста, к оторому относится вопрос (для выборки)
 
-    String text;
+    public String text;
 
-    int picture;
+    public int picture;
 
-    String answer1;
+    public String answer1;
 
-    String answer2;
+    public String answer2;
 
-    String answer3;
+    public String answer3;
 
-    String true_answer;
+    public String true_answer;
 
+
+    public int getId() {
+        return id;
+    }
+
+    public int getId_Test() {
+        return id_Test;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public int getPicture() {
+        return picture;
+    }
+
+    public String getAnswer1() {
+        return answer1;
+    }
+
+    public String getAnswer2() {
+        return answer2;
+    }
+
+    public String getAnswer3() {
+        return answer3;
+    }
+
+    public String getTrue_answer() {
+        return true_answer;
+    }
 }

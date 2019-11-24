@@ -1,13 +1,11 @@
 package com.hfad.tanktests.Model;
 import android.content.Context;
 
-import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
-import androidx.sqlite.db.SupportSQLiteDatabase;
 
-import com.hfad.tanktests.Utils;
+import com.hfad.tanktests.utils.Utils;
 
 // база данных
 
@@ -28,6 +26,11 @@ import com.hfad.tanktests.Utils;
         if (instance == null){
 
             instance = buildDataBase(context); // создать новый объект
+
+            //заполонение БД в фоновом потоке
+            FillDB fillDB = new FillDB();
+            Thread thread = new Thread(fillDB);
+            thread.start();
         }
 
         return instance;
@@ -40,19 +43,16 @@ import com.hfad.tanktests.Utils;
         return Room.databaseBuilder(context,
                                     DateBase.class,
                                     Utils.DATE_BASE_NAME)
-                                    .addCallback(new Callback() {
-                                        @Override
-                                        public void onCreate(@NonNull SupportSQLiteDatabase db) {
-                                            super.onCreate(db);
-
-                                            // заполнение в фоне
-                                            FillDB fillDB = new FillDB();
-                                            Thread thread = new Thread(fillDB);
-                                            thread.start();
-
-                                        }
-                                    }).build();
+                                    .fallbackToDestructiveMigration()          // удалить/очистить предыдущую базу данных
+                                    .build();
 
     }
+
+
+
+
+
+
+
 
 }

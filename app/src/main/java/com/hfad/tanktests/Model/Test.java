@@ -8,11 +8,28 @@ import androidx.room.PrimaryKey;
 public class Test {
 
     @PrimaryKey
-    int id;
+    public int id;
 
-    String name;
+    public String name;
 
-    int picture;
+    public int picture;
 
-    String description;
+    public String description;
+
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getPicture() {
+        return picture;
+    }
+
+    public String getDescription() {
+        return description;
+    }
 }
