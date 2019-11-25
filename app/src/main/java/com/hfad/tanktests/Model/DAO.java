@@ -6,6 +6,7 @@ package com.hfad.tanktests.Model;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
@@ -43,7 +44,7 @@ public interface DAO {
     //    // для работы с таблицей Question
     //_____________________________________________________________________________________________
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertQuestion(Question question);
 
     @Query("SELECT * FROM " + Utils.TABLE_NAME_QUESTIONS + " WHERE id = :id")
@@ -63,5 +64,6 @@ public interface DAO {
 
     @Query("SELECT * FROM " + Utils.TABLE_NAME_TEST)
     List <Test> getAllTest();
+
 
 }

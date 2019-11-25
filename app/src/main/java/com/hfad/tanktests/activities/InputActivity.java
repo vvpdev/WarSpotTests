@@ -1,13 +1,15 @@
 package com.hfad.tanktests.activities;
 
-import android.content.Context;
-import android.content.SharedPreferences;
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
+import com.bumptech.glide.Glide;
 import com.hfad.tanktests.R;
 import com.hfad.tanktests.interfaces.InputInterface;
 import com.hfad.tanktests.presenters.InputPresenter;
@@ -21,24 +23,47 @@ public class InputActivity extends MvpAppCompatActivity implements InputInterfac
     @InjectPresenter
     InputPresenter inputPresenter;
 
-    // для начального заполнения БД
-    public static Context context;
+
+//    // для проверки заполнения БД
+//    SharedPreferences sharedPreferences_obj;
 
 
-    // для проверки заполнения БД
-    SharedPreferences sharedPreferences_obj;
+    //init UI
+    ImageView imageInputGif;
+    Button buttonStart;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.input_activity);
-                                                                                // имя файла, тип достпупа к данным
-        sharedPreferences_obj = this.getSharedPreferences("check_DB", Context.MODE_PRIVATE);
-        // MODE_PRIVATE - только из данного приложения
 
-        //init context
-        context = this;
+
+        setTitle("Вход");
+
+        inputPresenter.fillDB();
+
+
+        //UI
+        imageInputGif = findViewById(R.id.imageInputGif);
+        buttonStart = findViewById(R.id.buttonStart);
+
+        buttonStart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(InputActivity.this, MenuActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        // для гифки
+        Glide
+                .with(this)
+                .load(R.drawable.start_picture)
+                .centerCrop()
+                .into(imageInputGif);
     }
 
     @Override
@@ -47,25 +72,4 @@ public class InputActivity extends MvpAppCompatActivity implements InputInterfac
         toast.show();
     }
 
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-                                            // если не найдено, то возвращаем true
-        if (sharedPreferences_obj.getBoolean("my_key",true)){
-            sharedPreferences_obj.edit().putBoolean("my_key", false).apply();   // кладем false
-
-            Log.i("kanistra", "БД пустая, начинаем заполнение");
-
-            //заполнение БД
-            inputPresenter.fillDB();
-        }
-
-        else {
-            Log.i("kanistra", "БД уже заполнена!");
-        }
-
-
-    }
 }

@@ -3,8 +3,8 @@ package com.hfad.tanktests.presenters;
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 import com.hfad.tanktests.Model.DateBase;
-import com.hfad.tanktests.activities.InputActivity;
 import com.hfad.tanktests.interfaces.InputInterface;
+import com.hfad.tanktests.utils.ContextApp;
 
 @InjectViewState
 public class InputPresenter extends MvpPresenter <InputInterface> {
@@ -18,8 +18,17 @@ public class InputPresenter extends MvpPresenter <InputInterface> {
     // на первом экране заполним БД
     public void fillDB() {
 
-        // получение инстанса - запускается билд и заполнение БД
-        DateBase.getInstance(InputActivity.context);
+        if(ContextApp.checkFillDB()){   // если возвращает true
+
+            // получение инстанса - запускается билд и заполнение БД
+            DateBase.getInstance(ContextApp.getInstance());
+        }
+        else {
+            // ничего не делаем, БД уже заполнена
+        }
+
+
+
     }
 
 }

@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey;
 @Entity
 public class Test {
 
-    @PrimaryKey
+    @PrimaryKey (autoGenerate = true)
     public int id;
 
     public String name;
@@ -17,19 +17,4 @@ public class Test {
     public String description;
 
 
-    public int getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getPicture() {
-        return picture;
-    }
-
-    public String getDescription() {
-        return description;
-    }
 }

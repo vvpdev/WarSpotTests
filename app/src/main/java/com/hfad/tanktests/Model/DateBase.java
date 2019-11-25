@@ -27,10 +27,6 @@ import com.hfad.tanktests.utils.Utils;
 
             instance = buildDataBase(context); // создать новый объект
 
-            //заполонение БД в фоновом потоке
-            FillDB fillDB = new FillDB();
-            Thread thread = new Thread(fillDB);
-            thread.start();
         }
 
         return instance;

@@ -6,7 +6,7 @@ package com.hfad.tanktests.Model;
 import android.util.Log;
 
 import com.hfad.tanktests.R;
-import com.hfad.tanktests.activities.InputActivity;
+import com.hfad.tanktests.utils.ContextApp;
 
 public class FillDB implements Runnable{
 
@@ -29,7 +29,7 @@ public class FillDB implements Runnable{
         question1.answer3 = "Итальянский Fiat 2000";
         question1.true_answer = question1.answer2;
 
-        DateBase.getInstance(InputActivity.context).dao().insertQuestion(question1);
+        DateBase.getInstance(ContextApp.getInstance()).dao().insertQuestion(question1);
 
 
         Question question2 = new Question();
@@ -42,7 +42,7 @@ public class FillDB implements Runnable{
         question2.answer3 = "Французский Renault FT";
         question2.true_answer = question2.answer1;
 
-        DateBase.getInstance(InputActivity.context).dao().insertQuestion(question2);
+        DateBase.getInstance(ContextApp.getInstance()).dao().insertQuestion(question2);
 
 
         Question question3 = new Question();
@@ -55,24 +55,22 @@ public class FillDB implements Runnable{
         question3.answer3 = "Американский Ford 3-Ton M1918";
         question3.true_answer = question3.answer3;
 
-        DateBase.getInstance(InputActivity.context).dao().insertQuestion(question3);
+        DateBase.getInstance(ContextApp.getInstance()).dao().insertQuestion(question3);
 
 
         //__________________________________________________________________________________________
         //заполнение таблицы Test
         //__________________________________________________________________________________________
 
+        //первый тест
         Test test1 = new Test();
-        test1.id = 1;
         test1.name = "На заре танковой эры";
         test1.picture = R.drawable.test1_cover;
         test1.description = "Попробуйте по фотографиям идентифицировать 10 гусеничных боевых машин, созданных в годы Первой мировой войны, когда многие из них ещё здорово отличались от привычных нам танков";
 
-        DateBase.getInstance(InputActivity.context).dao().insertTest(test1);
+        DateBase.getInstance(ContextApp.getInstance()).dao().insertTest(test1);
 
-        Log.i("kanistra", "БД заполнена! из FillDB класса");
-
-        Log.i("kanistra", "первый тест = " + DateBase.getInstance(InputActivity.context).dao().getTestById(1).name);
+        Log.i("my_teg", "(FillDB) БД заполнена!");
 
     }
 
