@@ -31,6 +31,7 @@ public class TestActivity extends MvpAppCompatActivity implements TestInterface 
     ImageView imageArrow;
     LinearLayout backgroundLayout;
     TextView textCurrentQuestion;
+    ImageView imageCloseTextQuestion;
 
 
 
@@ -43,16 +44,16 @@ public class TestActivity extends MvpAppCompatActivity implements TestInterface 
         imageArrow = findViewById(R.id.imageArrow);
         backgroundLayout = findViewById(R.id.backgroudLayout);
         textCurrentQuestion = findViewById(R.id.textCurrentQuestion);
+        imageCloseTextQuestion = findViewById(R.id.imageCloseTextQuestion);
 
 
         textCurrentQuestion.setText("Этот 14-тонный танк, вооружённый 75-мм орудием и двумя 8-мм пулемётами");
 
 
+        // начальные условия
         backgroundLayout.setVisibility(View.GONE);
         textCurrentQuestion.setVisibility(View.GONE);
-
-
-
+        imageCloseTextQuestion.setVisibility(View.GONE);
     }
 
 
@@ -77,14 +78,33 @@ public class TestActivity extends MvpAppCompatActivity implements TestInterface 
 
     }
 
-    //@Override
+
+
+
+    // отображение текста
     public void showTextQuestion(View view) {
 
-        // при нажатии на стрелку
-        imageArrow.setVisibility(View.GONE);
+        int id = view.getId();
 
+        switch (id){
 
-        backgroundLayout.setVisibility(View.VISIBLE);
-        textCurrentQuestion.setVisibility(View.VISIBLE);
+            // показать
+            case R.id.imageArrow:
+
+                imageArrow.setVisibility(View.GONE);
+                backgroundLayout.setVisibility(View.VISIBLE);
+                textCurrentQuestion.setVisibility(View.VISIBLE);
+                imageCloseTextQuestion.setVisibility(View.VISIBLE);
+                break;
+
+            //скрыть
+            case R.id.imageCloseTextQuestion:
+
+                imageArrow.setVisibility(View.VISIBLE);
+                backgroundLayout.setVisibility(View.GONE);
+                textCurrentQuestion.setVisibility(View.GONE);
+                imageCloseTextQuestion.setVisibility(View.GONE);
+                break;
+        }
     }
 }

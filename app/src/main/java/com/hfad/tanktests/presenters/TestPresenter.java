@@ -39,7 +39,6 @@ public class TestPresenter extends MvpPresenter <TestInterface> {
 
         Thread thread = new Thread(runnable);
         thread.start();
-
     }
 
     public List<Question> getQuestionList() {

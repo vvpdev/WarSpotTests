@@ -13,9 +13,4 @@ public interface TestInterface extends MvpView {
 
         // обработка нажатий на кнопки ответов
         void onClickAnswer();
-
-
-        // скрытие/показ текста вопроса
-        //void showTextQuestion(View view);
-
 }
