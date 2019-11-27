@@ -21,7 +21,6 @@ public class MenuPresenter extends MvpPresenter <MenuInterface> {
     // конструктор
     public MenuPresenter() {
 
-
         if (testList == null){
 
             Runnable runnable = () -> {
@@ -35,15 +34,15 @@ public class MenuPresenter extends MvpPresenter <MenuInterface> {
 
             Thread thread = new Thread(runnable);
             thread.start();
-
         }
 
-
-        // init UI
+        // методы UI
         getViewState().initRecyclerViewMenu();
+        getViewState().onClickSelectedTest();
     }
 
     public static List<Test> getTestList() {
         return testList;
     }
+
 }

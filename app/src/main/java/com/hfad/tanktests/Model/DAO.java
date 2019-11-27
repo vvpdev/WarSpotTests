@@ -51,6 +51,9 @@ public interface DAO {
     Question getQuestionById(int id);
 
 
+    @Query("SELECT * FROM " + Utils.TABLE_NAME_QUESTIONS + " WHERE id_Test = :id")
+    List <Question> getAllQuestionsByTestId(int id);
+
 
     //_____________________________________________________________________________________________
     //    // для работы с таблицей Test

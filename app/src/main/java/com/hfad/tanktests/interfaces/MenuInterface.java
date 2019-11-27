@@ -8,6 +8,6 @@ public interface MenuInterface extends MvpView {
         // инициализация меню
         void initRecyclerViewMenu();
 
-        //обработка нажатий
-        void onClickTest();
+        //передача id выбранного теста
+        void onClickSelectedTest();
 }

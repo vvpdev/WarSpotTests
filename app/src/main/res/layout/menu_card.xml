@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardMenu"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
@@ -11,32 +12,38 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/imageViewTest"
-            android:layout_width="120dp"
-            android:layout_height="100dp"
-            android:layout_marginStart="6dp"
-            android:layout_marginTop="6dp"
-            android:layout_marginEnd="6dp"
-            android:layout_marginBottom="6dp" />
-
-        <TextView
-            android:id="@+id/textTitleTest"
+        <FrameLayout
+            android:id="@+id/FrameLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_toEndOf="@id/imageViewTest"
-            android:text="textTitleTest"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imageViewTest"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="6dp"
+                android:layout_marginBottom="6dp"
+                app:srcCompat="@drawable/logo_app_background" />
+
+            <TextView
+                android:id="@+id/textTitleTest"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_margin="10dp"
+                android:text="textTitleTest"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="#FFFFFF" />
+        </FrameLayout>
 
         <TextView
             android:id="@+id/textViewDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textTitleTest"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="10dp"
-            android:layout_toEndOf="@id/imageViewTest"
+            android:layout_below="@id/FrameLayout"
+            android:layout_margin="8dp"
             android:text="textViewDescription"
             android:textAppearance="@style/TextAppearance.AppCompat.Small" />
     </RelativeLayout>

@@ -45,6 +45,8 @@ public class ContextApp extends Application {
 
             Log.i("my_teg", "(ContextApp) БД пустая, начинаем заполнение");
 
+
+            // фоновый поток для заполнения
             FillDB fillDB = new FillDB();
             Thread thread = new Thread(fillDB);
             thread.start();

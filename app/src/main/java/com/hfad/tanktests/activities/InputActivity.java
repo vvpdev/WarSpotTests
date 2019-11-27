@@ -2,14 +2,12 @@ package com.hfad.tanktests.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
-import com.bumptech.glide.Glide;
 import com.hfad.tanktests.R;
 import com.hfad.tanktests.interfaces.InputInterface;
 import com.hfad.tanktests.presenters.InputPresenter;
@@ -49,21 +47,18 @@ public class InputActivity extends MvpAppCompatActivity implements InputInterfac
         imageInputGif = findViewById(R.id.imageInputGif);
         buttonStart = findViewById(R.id.buttonStart);
 
-        buttonStart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(InputActivity.this, MenuActivity.class);
-                startActivity(intent);
-            }
+        buttonStart.setOnClickListener(v -> {
+            Intent intent = new Intent(InputActivity.this, MenuActivity.class);
+            startActivity(intent);
         });
 
 
         // для гифки
-        Glide
-                .with(this)
-                .load(R.drawable.start_picture)
-                .centerCrop()
-                .into(imageInputGif);
+//        Glide
+//                .with(this)
+//                .load(R.drawable.start_picture)
+//                .centerCrop()
+//                .into(imageInputGif);
     }
 
     @Override

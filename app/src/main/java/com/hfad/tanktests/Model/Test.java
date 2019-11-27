@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey;
 @Entity
 public class Test {
 
-    @PrimaryKey (autoGenerate = true)
+    @PrimaryKey //(autoGenerate = true)
     public int id;
 
     public String name;

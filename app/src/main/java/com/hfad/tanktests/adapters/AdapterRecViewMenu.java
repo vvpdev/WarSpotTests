@@ -1,5 +1,6 @@
 package com.hfad.tanktests.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -27,6 +29,7 @@ public class AdapterRecViewMenu extends RecyclerView.Adapter <AdapterRecViewMenu
     LayoutInflater layoutInflater;
 
 
+
     // конструктор
     public AdapterRecViewMenu(List<Test> testList, Context context) {
         this.testList = testList;
@@ -40,6 +43,7 @@ public class AdapterRecViewMenu extends RecyclerView.Adapter <AdapterRecViewMenu
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view = layoutInflater.inflate(R.layout.menu_card, parent, false);
+
         return new ViewHolder(view);
     }
 
@@ -57,6 +61,7 @@ public class AdapterRecViewMenu extends RecyclerView.Adapter <AdapterRecViewMenu
                 .load(test.picture)
                 .centerCrop()
                 .into(holder.imageViewTest);
+
     }
 
     @Override
@@ -71,12 +76,16 @@ public class AdapterRecViewMenu extends RecyclerView.Adapter <AdapterRecViewMenu
         TextView textTitleTest;
         TextView textViewDescription;
 
+        CardView cardMenu;
+
+        @SuppressLint("ResourceType")
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             imageViewTest = itemView.findViewById(R.id.imageViewTest);
             textTitleTest = itemView.findViewById(R.id.textTitleTest);
             textViewDescription = itemView.findViewById(R.id.textViewDescription);
+            cardMenu = itemView.findViewById(R.id.cardMenu);
         }
     }
 }
