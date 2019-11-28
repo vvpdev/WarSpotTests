@@ -4,4 +4,20 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="background_recyclerViewListTest">#9FDAD7D8</color>
+
+
+    <color name="false_answer">@android:color/holo_red_light</color>
+
+    <color name="true_answer">@android:color/holo_green_light</color>
+
+    <color name="true_button_next">#3F9947</color>
+    <color name="false_button_next">#696B69</color>
+
+
+    <!-- для кнопок -->
+    <color name="correct_answer">#9BEC9B</color>
+    <color name="incorrect_answer">#E96E5E</color>
+    <color name="default_answer">#85CCCCCC</color>
+
+
 </resources>

@@ -28,37 +28,4 @@ public class Question {
     public String answer3;
 
     public String true_answer;
-
-
-    public int getId() {
-        return id;
-    }
-
-    public int getId_Test() {
-        return id_Test;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public int getPicture() {
-        return picture;
-    }
-
-    public String getAnswer1() {
-        return answer1;
-    }
-
-    public String getAnswer2() {
-        return answer2;
-    }
-
-    public String getAnswer3() {
-        return answer3;
-    }
-
-    public String getTrue_answer() {
-        return true_answer;
-    }
 }
