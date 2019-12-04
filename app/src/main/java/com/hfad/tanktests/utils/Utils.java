@@ -13,7 +13,7 @@ public class Utils {
 
 
         public static final String DATE_BASE_NAME = "datebase";
-        public static final int DATE_BASE_VERSION = 3;
+        public static final int DATE_BASE_VERSION = 6;
 
         // таблица User
         public static final String TABLE_NAME_USERS = "user";

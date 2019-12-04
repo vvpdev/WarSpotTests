@@ -1,4 +1,4 @@
-package com.hfad.tanktests.adapters;
+package com.hfad.tanktests.listeners;
 
 import android.content.Context;
 import android.view.GestureDetector;
@@ -14,7 +14,7 @@ public class RecyclerItemClickListener implements RecyclerView.OnItemTouchListen
 
 
     // детектор жестор
-    GestureDetector gestureDetector;
+    private GestureDetector gestureDetector;
 
     // анонимный класс из интефейса
     private ClickListener listener;

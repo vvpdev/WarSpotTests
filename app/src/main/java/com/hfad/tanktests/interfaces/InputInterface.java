@@ -8,4 +8,7 @@ import com.arellomobile.mvp.MvpView;
 public interface InputInterface extends MvpView {
 
     void showWelcome(String message);
+
+
+
 }

@@ -28,12 +28,12 @@
         android:layout_height="wrap_content">
 
 
-
-        <ImageView
-            android:id="@+id/imageCurrentQuestion"
-            android:layout_width="wrap_content"
-            android:layout_height="300dp"
-            app:srcCompat="@drawable/picture1_1" />
+            <ImageView
+                android:id="@+id/imageCurrentQuestion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:foregroundGravity="center_horizontal"
+                app:srcCompat="@drawable/picture1_1" />
 
         <ImageView
             android:id="@+id/imageArrow"
@@ -43,27 +43,18 @@
             android:onClick="showTextQuestion"
             app:srcCompat="@drawable/arrow" />
 
-        <LinearLayout
-            android:id="@+id/backgroudLayout"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_gravity="bottom"
-            android:alpha="0.7"
-            android:background="#6B6B6B"
-            android:orientation="horizontal">
-
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/textCurrentQuestion"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_gravity="bottom"
-            android:text="textCurrentQuestion"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textColor="#F5F3F3"
-            android:textSize="20sp" />
+            <TextView
+                android:id="@+id/textCurrentQuestion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:alpha="0.85"
+                android:background="#6B6B6B"
+                android:text="textCurrentQuestion"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="#F5F3F3"
+                android:textSize="20sp" />
 
         <ImageView
             android:id="@+id/imageCloseTextQuestion"
@@ -116,7 +107,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_margin="10dp"
             android:background="#4B4949"
-            android:text="ДАЛЕЕ"
+            android:text="@string/next_question"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="#FCFAFA"
             android:textStyle="bold" />

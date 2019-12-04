@@ -19,6 +19,8 @@ public class ContextApp extends Application {
     public static SharedPreferences sharedPreferences_obj;
 
 
+
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -27,8 +29,9 @@ public class ContextApp extends Application {
 
 
         // чек - заполнена ли БД                          имя файла, тип достпупа к данным - только из приложения
-        sharedPreferences_obj = this.getSharedPreferences("check_DB", Context.MODE_PRIVATE);
-        // MODE_PRIVATE - только из данного приложения
+        sharedPreferences_obj = this.getSharedPreferences("my_app", Context.MODE_PRIVATE);
+          // MODE_PRIVATE - только из данного приложения
+
     }
 
     public static ContextApp getInstance() {
@@ -60,6 +63,27 @@ public class ContextApp extends Application {
             return false;
         }
     }
+
+
+
+    // проверка - показывалось ли окно о стрелке на экране с тестом
+    public static Boolean checkMessageArrow(){
+
+                // если сообщение о стрелке уже показывалось
+        if (sharedPreferences_obj.getBoolean("arrow", false)){
+
+            return true;
+        }
+        else {
+            // если не показывалось - кладем true
+            sharedPreferences_obj.edit().putBoolean("arrow", true).apply();
+            return false;
+        }
+    }
+
+
+
+
 
 
 

@@ -65,8 +65,19 @@ public interface DAO {
     @Query("SELECT * FROM " + Utils.TABLE_NAME_TEST + " WHERE id = :id")
     Test getTestById(int id);
 
+
     @Query("SELECT * FROM " + Utils.TABLE_NAME_TEST)
     List <Test> getAllTest();
+
+
+    // обновление статуса теста
+    @Query ("UPDATE " + Utils.TABLE_NAME_TEST + " SET status = :newStatus WHERE id = :id")
+    void changeStatusTest(int newStatus, int id);
+
+    //запросить текущий статус теста
+    @Query("SELECT status FROM " + Utils.TABLE_NAME_TEST + " WHERE id = :id")
+    int getStatusTest(int id);
+
 
 
 }

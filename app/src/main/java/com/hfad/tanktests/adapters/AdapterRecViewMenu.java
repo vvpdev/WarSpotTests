@@ -23,10 +23,10 @@ public class AdapterRecViewMenu extends RecyclerView.Adapter <AdapterRecViewMenu
 
 
     // массив
-    List<Test> testList;
+    private List<Test> testList;
 
     //раздуватель
-    LayoutInflater layoutInflater;
+    private LayoutInflater layoutInflater;
 
 
 
@@ -53,14 +53,21 @@ public class AdapterRecViewMenu extends RecyclerView.Adapter <AdapterRecViewMenu
         // объект массива
         Test test = testList.get(position);
 
+        //название
         holder.textTitleTest.setText(test.name);
+
+        //описание
         holder.textViewDescription.setText(test.description);
 
+        //картинка
         Glide
                 .with(ContextApp.getInstance())
                 .load(test.picture)
                 .centerCrop()
                 .into(holder.imageViewTest);
+
+        // статус теста
+        holder.textStatus.setText("лучший результат: " + test.status + " из 10");
 
     }
 
@@ -75,17 +82,19 @@ public class AdapterRecViewMenu extends RecyclerView.Adapter <AdapterRecViewMenu
         ImageView imageViewTest;
         TextView textTitleTest;
         TextView textViewDescription;
+        TextView textStatus;
 
         CardView cardMenu;
 
         @SuppressLint("ResourceType")
-        public ViewHolder(@NonNull View itemView) {
+        private ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             imageViewTest = itemView.findViewById(R.id.imageViewTest);
             textTitleTest = itemView.findViewById(R.id.textTitleTest);
             textViewDescription = itemView.findViewById(R.id.textViewDescription);
             cardMenu = itemView.findViewById(R.id.cardMenu);
+            textStatus = itemView.findViewById(R.id.textStatus);
         }
     }
 }

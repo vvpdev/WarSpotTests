@@ -31,4 +31,10 @@ public interface TestInterface extends MvpView {
         // восстанавливаем дефолтный фон кнопок
         void onRestoreDefaultColor();
 
+        // задать название теста заголовком
+        void setTitleActivity(String name);
+
+
+        // сообщение - клик по стрелке
+        void showMessageAboutArrow();
 }

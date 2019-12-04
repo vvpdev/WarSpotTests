@@ -15,9 +15,9 @@
 
 
     <!-- для кнопок -->
-    <color name="correct_answer">#9BEC9B</color>
-    <color name="incorrect_answer">#E96E5E</color>
-    <color name="default_answer">#85CCCCCC</color>
+    <color name="correct_answer">#3BB63B</color>
+    <color name="incorrect_answer">#BD3838</color>
+    <color name="default_answer">#E7E5E5</color>
 
 
 </resources>

@@ -1,7 +1,9 @@
 package com.hfad.tanktests.activities;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import androidx.core.app.NavUtils;
 
@@ -13,17 +15,22 @@ import com.hfad.tanktests.presenters.ResultPresenter;
 
 public class ResultActivity extends MvpAppCompatActivity implements ResultInterface {
 
-    // активити для показа результата
 
+
+    // активити для показа результата
 
     @InjectPresenter
     ResultPresenter resultPresenter;
 
 
-
     int quantityTrueAnswers;
-
     Intent intent;
+
+    TextView textViewQuantity;
+
+
+    //для звука
+    MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +39,10 @@ public class ResultActivity extends MvpAppCompatActivity implements ResultInterf
 
         setTitle("Результаты");
 
-        intent = getIntent();
-        quantityTrueAnswers = intent.getExtras().getInt("quantityTrueAnswers");
+        textViewQuantity = findViewById(R.id.textViewQuantity);
+
+        //init player
+        mediaPlayer = MediaPlayer.create(this,R.raw.sound_test);
     }
 
 
@@ -46,9 +55,26 @@ public class ResultActivity extends MvpAppCompatActivity implements ResultInterf
     }
 
 
-
     @Override
-    public void showQuantytiTrueAnswers(int quantity) {
+    public void showQuantytiTrueAnswers() {
+
+        intent = getIntent();
+        quantityTrueAnswers = intent.getExtras().getInt("quantityTrueAnswers");
+        textViewQuantity.setText(String.valueOf(quantityTrueAnswers));
 
     }
+
+
+
+
+    // звук
+    @Override
+    public void playSound() {
+
+        mediaPlayer.start();
+    }
+
+
+
+
 }

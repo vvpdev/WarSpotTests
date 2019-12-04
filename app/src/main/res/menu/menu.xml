@@ -3,10 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-    <item android:id="@+id/saveUser"
-        android:title="сохранить"
-        android:icon="@drawable/save_user"
+    <item android:title="@string/text_developer"
+        android:icon="@drawable/developer_icon"
         app:showAsAction="always"
-        android:orderInCategory="1"/>
+        android:orderInCategory="1"
+        android:id="@+id/developerPicture"/>
+
+
 
 </menu>

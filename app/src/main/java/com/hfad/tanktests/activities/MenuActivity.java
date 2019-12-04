@@ -10,7 +10,7 @@ import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.hfad.tanktests.R;
 import com.hfad.tanktests.adapters.AdapterRecViewMenu;
-import com.hfad.tanktests.adapters.RecyclerItemClickListener;
+import com.hfad.tanktests.listeners.RecyclerItemClickListener;
 import com.hfad.tanktests.interfaces.MenuInterface;
 import com.hfad.tanktests.presenters.MenuPresenter;
 import com.hfad.tanktests.utils.ContextApp;

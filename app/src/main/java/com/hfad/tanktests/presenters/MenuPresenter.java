@@ -15,7 +15,7 @@ public class MenuPresenter extends MvpPresenter <MenuInterface> {
 
 
     //массив
-    public static List<Test> testList;
+    private static List<Test> testList;
 
 
     // конструктор
@@ -23,26 +23,39 @@ public class MenuPresenter extends MvpPresenter <MenuInterface> {
 
         if (testList == null){
 
-            Runnable runnable = () -> {
-
-                // заполняем массив
-                testList = DateBase.getInstance(ContextApp.getInstance()).dao().getAllTest();
-
-                // возвращаем заполненный массив
-                getTestList();
-            };
-
-            Thread thread = new Thread(runnable);
-            thread.start();
+            initMenuPresenter();
         }
+
+        //если не пустой - очищаем для обновления статусов и загружаем снова
+        else {
+            testList.clear();
+
+            initMenuPresenter();
+
+        }
+
 
         // методы UI
         getViewState().initRecyclerViewMenu();
         getViewState().onClickSelectedTest();
     }
 
+
+
+    private void initMenuPresenter() {
+
+            Runnable runnable = () -> {
+
+                // заполняем массив
+                testList = DateBase.getInstance(ContextApp.getInstance()).dao().getAllTest();
+
+            };
+
+            Thread thread = new Thread(runnable);
+            thread.start();
+    }
+
     public static List<Test> getTestList() {
         return testList;
     }
-
 }

@@ -8,4 +8,40 @@
     <string name="nameRegisterActivity">Новый пользователь</string>
 
 
+    <string name="github_link">github.com/vvpdev</string>
+
+
+    <string name="message_about_arrow">Клик по стрелке показывает текст вопроса</string>
+
+
+    <string name="descriptionApp">Неофициальное приложение портала Военное Обозрение (WarSpot.ru), в котором собраны
+                                    тесты на танковую тематику
+    </string>
+    <string name="title_activity_settings">Настройки</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+
+
+    <string name="full_description_setting">воспроизводить звук после завершения теста</string>
+    <string name="soundTitle">Звук</string>
+    <string name="text_quantity_true_answers">количество правильных ответов</string>
+    <string name="text_developer">разработчик</string>
+    <string name="tests">тесты</string>
+    <string name="settings">настройки</string>
+    <string name="next_question">далее</string>
+
+
 </resources>

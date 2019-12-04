@@ -5,19 +5,21 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.ActionBar;
 import androidx.core.app.NavUtils;
 
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
+import com.bumptech.glide.Glide;
 import com.hfad.tanktests.Model.Question;
 import com.hfad.tanktests.R;
 import com.hfad.tanktests.interfaces.TestInterface;
@@ -26,16 +28,10 @@ import com.hfad.tanktests.presenters.TestPresenter;
 import java.util.Objects;
 
 
-// экран с тестом
+        // экран с тестом
 
-        // тулбар - номер вопроса
 
 public class TestActivity extends MvpAppCompatActivity implements TestInterface {
-
-
-
-    //сделать после нажатия некликабельными кнопки ответов
-
 
 
     @InjectPresenter
@@ -46,7 +42,6 @@ public class TestActivity extends MvpAppCompatActivity implements TestInterface 
 
     //UI
     ImageView imageArrow;
-    LinearLayout backgroundLayout;
     TextView textCurrentQuestion;
     ImageView imageCloseTextQuestion;
     ImageView imageCurrentQuestion;
@@ -60,8 +55,17 @@ public class TestActivity extends MvpAppCompatActivity implements TestInterface 
     Button buttonAnswer2;
     Button buttonAnswer3;
 
+
+    //для тулбара
+    ActionBar actionBar;
+
+
     // окно - закрыть тест или нет
     AlertDialog.Builder builder;
+
+
+    // сообщение про стрелку
+    AlertDialog.Builder builderMessageArrow;
 
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -70,9 +74,19 @@ public class TestActivity extends MvpAppCompatActivity implements TestInterface 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.test_activity);
 
+
+        actionBar = getSupportActionBar();
+
+
+        //для стрелки назад
+        actionBar.setHomeButtonEnabled(true);       //показ
+        actionBar.setDisplayHomeAsUpEnabled(true);  //включена
+
+
+
+
         //init UI
         imageArrow = findViewById(R.id.imageArrow);
-        backgroundLayout = findViewById(R.id.backgroudLayout);
         textCurrentQuestion = findViewById(R.id.textCurrentQuestion);
         imageCloseTextQuestion = findViewById(R.id.imageCloseTextQuestion);
         imageCurrentQuestion = findViewById(R.id.imageCurrentQuestion);
@@ -87,13 +101,11 @@ public class TestActivity extends MvpAppCompatActivity implements TestInterface 
 
 
         // начальные условия
-        backgroundLayout.setVisibility(View.GONE);
         textCurrentQuestion.setVisibility(View.GONE);
         imageCloseTextQuestion.setVisibility(View.GONE);
 
         // изначально некликабельна
         buttonNext.setClickable(false);
-
     }
 
 
@@ -108,7 +120,6 @@ public class TestActivity extends MvpAppCompatActivity implements TestInterface 
 
             // запускается загрузка данных для макета
             testPresenter.LoadDataTest(id);
-
     }
 
 
@@ -116,12 +127,18 @@ public class TestActivity extends MvpAppCompatActivity implements TestInterface 
     @Override
     public void onLoadDataToLayout(Question question) {
 
-        imageCurrentQuestion.setImageResource(question.picture);
+
+        Glide
+                .with(this)
+                .load(question.picture)
+                .into(imageCurrentQuestion);
+
         textCurrentQuestion.setText(question.text);
         buttonAnswer1.setText(question.answer1);
         buttonAnswer2.setText(question.answer2);
         buttonAnswer3.setText(question.answer3);
     }
+
 
 
 
@@ -176,8 +193,6 @@ public class TestActivity extends MvpAppCompatActivity implements TestInterface 
                     break;
             }
         }
-
-
     }
 
 
@@ -195,6 +210,10 @@ public class TestActivity extends MvpAppCompatActivity implements TestInterface 
         progressCurrentTest.setMax(max);
     }
 
+
+
+
+    // тут нужно закрашивать кнопки!!!!!!!
 
 
     //настройка кнопок
@@ -230,8 +249,34 @@ public class TestActivity extends MvpAppCompatActivity implements TestInterface 
     public void onRestoreDefaultColor() {
 
         buttonAnswer1.setBackgroundResource(R.color.default_answer);
-        buttonAnswer1.setBackgroundResource(R.color.default_answer);
-        buttonAnswer1.setBackgroundResource(R.color.default_answer);
+        buttonAnswer2.setBackgroundResource(R.color.default_answer);
+        buttonAnswer3.setBackgroundResource(R.color.default_answer);
+    }
+
+
+
+
+
+    // заголовок - название теста
+    @Override
+    public void setTitleActivity(String name) {
+        setTitle(name);
+    }
+
+
+
+
+    // сообщение клик по стрелке
+    @Override
+    public void showMessageAboutArrow() {
+
+        builderMessageArrow = new AlertDialog.Builder(this);
+
+        builderMessageArrow.setMessage(R.string.message_about_arrow)
+                .setPositiveButton("ок", (dialog, which) -> dialog.cancel());
+
+        builderMessageArrow.create();
+        builderMessageArrow.show();
     }
 
 
@@ -264,7 +309,6 @@ public class TestActivity extends MvpAppCompatActivity implements TestInterface 
             case R.id.imageArrow:
 
                 imageArrow.setVisibility(View.GONE);
-                backgroundLayout.setVisibility(View.VISIBLE);
                 textCurrentQuestion.setVisibility(View.VISIBLE);
                 imageCloseTextQuestion.setVisibility(View.VISIBLE);
                 break;
@@ -273,7 +317,6 @@ public class TestActivity extends MvpAppCompatActivity implements TestInterface 
             case R.id.imageCloseTextQuestion:
 
                 imageArrow.setVisibility(View.VISIBLE);
-                backgroundLayout.setVisibility(View.GONE);
                 textCurrentQuestion.setVisibility(View.GONE);
                 imageCloseTextQuestion.setVisibility(View.GONE);
                 break;
@@ -286,6 +329,31 @@ public class TestActivity extends MvpAppCompatActivity implements TestInterface 
     public void onBackPressed() {
         //super.onBackPressed();    // закоментил - перекрыл кнопку Назад
 
+        showAlertDialog();
+    }
+
+
+
+    // для стрелки Назад в тулбаре
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+
+        switch (item.getItemId()){
+
+            case android.R.id.home:
+
+                showAlertDialog();
+                break;
+        }
+
+        return true;
+    }
+
+
+
+    //алерт диалог о закрытии теста
+    void showAlertDialog(){
         builder = new AlertDialog.Builder(this);
         builder.setTitle("Вы действительно хотите завершить тест?");
 
@@ -314,4 +382,6 @@ public class TestActivity extends MvpAppCompatActivity implements TestInterface 
         builder.create();
         builder.show();
     }
+
+
 }

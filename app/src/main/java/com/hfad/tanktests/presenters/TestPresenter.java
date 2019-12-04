@@ -1,6 +1,7 @@
 package com.hfad.tanktests.presenters;
 
 
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.Looper;
 
@@ -19,26 +20,42 @@ public class TestPresenter extends MvpPresenter <TestInterface> {
 
 
     //массив для вопросов текущего теста
-    List<Question> questionList = new ArrayList<>();
+    private List<Question> questionList = new ArrayList<>();
 
+
+    //конструтор
     public TestPresenter() {
         getViewState().sendSelectedTestId();
     }
 
+
     // номер текущего вопроса
-    int number = 0;
+    private int number = 0;
 
     // количество правильных ответов
-    int quantityTrueAnswers = 0;
+    private int quantityTrueAnswers = 0;
 
     //выбранный ответ
-    String selectedAnswer;
+    private String selectedAnswer;
+
+    // название теста
+    private String nameTest;
+
+
+    //номер теста
+    private int idTest;
+
+
+    //для чтения и записи текущих статусов
+    SharedPreferences sharedPreferencesTest;
 
 
     //после передачи id теста от активити к презентеру
     // загружам данные для выбранного теста из БД
     // далее - кидаем данные на макет
     public void LoadDataTest(int id) {
+
+        idTest = id;
 
         //Когда Handler создается, он может получить объект Looper в конструкторе, который указывает,
         // к какому потоку он прикреплен. Если вы хотите использовать Handler, прикрепленный к основному
@@ -48,7 +65,14 @@ public class TestPresenter extends MvpPresenter <TestInterface> {
         // действие как Runnable:
 
 
-        Runnable runnable = () -> questionList = DateBase.getInstance(ContextApp.getInstance()).dao().getAllQuestionsByTestId(id);
+        Runnable runnable = () -> {
+
+            questionList = DateBase.getInstance(ContextApp.getInstance()).dao().getAllQuestionsByTestId(id);
+
+            nameTest = DateBase.getInstance(ContextApp.getInstance()).dao().getTestById(id).name;
+        };
+
+
 
         Handler handler = new Handler (Looper.getMainLooper());
 
@@ -57,8 +81,14 @@ public class TestPresenter extends MvpPresenter <TestInterface> {
         handler.post(() -> {
             getViewState().onLoadDataToLayout(questionList.get(number));
 
-
             getViewState().initProgressBar(questionList.size());
+
+            getViewState().setTitleActivity(nameTest);
+
+
+            if (!ContextApp.checkMessageArrow()){    // если еще не показывалось сообщение
+                getViewState().showMessageAboutArrow();
+            }
         });
 
         Thread thread = new Thread(runnable);
@@ -68,8 +98,6 @@ public class TestPresenter extends MvpPresenter <TestInterface> {
 
     // обработка нажатий на кнопки ответов
     public void onClick(int answerId, int idSelectedButton){
-
-        // цвета для отеветов!!!!!
 
         //текст ответа
         selectedAnswer = null;
@@ -98,12 +126,11 @@ public class TestPresenter extends MvpPresenter <TestInterface> {
         }
 
         else {
-
+            getViewState().onColorButtons(idSelectedButton, false);
         }
 
-        //настройка кликабельности кнопок - Далее кликабельна, остальные - нет
+        //настройка кликабельности кнопок - "Далее" кликабельна, остальные - нет
         getViewState().settingButton(true);
-
     }
 
 
@@ -128,6 +155,11 @@ public class TestPresenter extends MvpPresenter <TestInterface> {
 
         //если нет - то тест закончен, переход к экрану результата
         else {
+
+
+            // сменить статус теста
+            setStatusFromNewThread();
+
             getViewState().onGoToResultScreen(quantityTrueAnswers);
         }
 
@@ -138,12 +170,27 @@ public class TestPresenter extends MvpPresenter <TestInterface> {
 
 
 
+    // задать статус теста в новом потоке
+    private void setStatusFromNewThread(){
 
-    // настройки для прогресс бара
-    public int setMaxItem(){
+        new Thread(){
 
-        int quantytiQuestions = questionList.size();
-        return quantytiQuestions;
+            @Override
+            public void run() {
+                super.run();
+
+
+                    int oldStatus = DateBase.getInstance(ContextApp.getInstance()).dao().getStatusTest(idTest);
+
+                    //если новое количество ответов больше чем было, то записываем в БД
+                    if (quantityTrueAnswers > oldStatus){
+
+                        DateBase.getInstance(ContextApp.getInstance()).dao().changeStatusTest(quantityTrueAnswers, idTest);
+                    }
+
+            }
+
+        }.start();
     }
 
 

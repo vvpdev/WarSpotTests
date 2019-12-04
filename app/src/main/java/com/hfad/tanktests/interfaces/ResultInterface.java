@@ -7,8 +7,9 @@ public interface ResultInterface extends MvpView {
 
 
         // показ количества правильных ответов
-        void showQuantytiTrueAnswers(int quantity);
+        void showQuantytiTrueAnswers();
 
-
+        // звук после прохождения теста
+        void playSound();
 
 }
