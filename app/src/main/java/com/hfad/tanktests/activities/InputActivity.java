@@ -34,8 +34,6 @@ public class InputActivity extends MvpAppCompatActivity implements InputInterfac
 
 
 
-    // добавить экран настроек - звук при прохождении теста
-
 
     //init UI
     ImageView imageMainBanner;

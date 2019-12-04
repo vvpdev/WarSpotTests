@@ -212,10 +212,6 @@ public class TestActivity extends MvpAppCompatActivity implements TestInterface 
 
 
 
-
-    // тут нужно закрашивать кнопки!!!!!!!
-
-
     //настройка кнопок
     @Override
     public void settingButton(Boolean setting) {

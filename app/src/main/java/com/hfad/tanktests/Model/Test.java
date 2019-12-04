@@ -16,5 +16,5 @@ public class Test {
 
     public String description;
 
-    public int status;       // пройден или нет тест
+    public int status;       // количество правильных ответов
 }

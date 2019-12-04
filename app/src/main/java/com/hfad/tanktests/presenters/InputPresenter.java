@@ -10,12 +10,12 @@ import com.hfad.tanktests.utils.ContextApp;
 public class InputPresenter extends MvpPresenter <InputInterface> {
 
 
-    // из конструктора - срабатывает сразу при запуске
+    // конструтор
     public InputPresenter() {
         getViewState().showWelcome("Добро пожаловать");
     }
 
-    // на первом экране заполним БД
+    // на первом экране заполняем БД
     public void fillDB() {
 
         if(ContextApp.checkFillDB()){   // если возвращает true

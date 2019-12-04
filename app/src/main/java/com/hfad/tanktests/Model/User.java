@@ -9,7 +9,7 @@ import androidx.room.PrimaryKey;
 @Entity
 public class User {
 
-    @PrimaryKey(autoGenerate = true)    // автоинкремент
+    @PrimaryKey(autoGenerate = true) 
     int id;
 
     public String name;
