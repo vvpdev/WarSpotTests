@@ -33,8 +33,6 @@ public class InputActivity extends MvpAppCompatActivity implements InputInterfac
     AlertDialog.Builder builder;
 
 
-
-
     //init UI
     ImageView imageMainBanner;
     Button buttonToTests;
