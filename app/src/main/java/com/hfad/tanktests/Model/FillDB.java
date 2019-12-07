@@ -424,7 +424,7 @@ public class FillDB implements Runnable{
         Question question31 = new Question();
         question31.id = 30;
         question31.id_Test = 3;
-        question31.text = "";
+        question31.text = "Какому образцу бронетехники соответствует данный силуэт?";
         question31.picture = R.drawable.picture4_1;
         question31.answer1 = "Т-90С Bhishma (Индия)";
         question31.answer2 = "Тype 97 Chi-Ha (Япония)";
@@ -439,7 +439,7 @@ public class FillDB implements Runnable{
         Question question32 = new Question();
         question32.id = 31;
         question32.id_Test = 3;
-        question32.text = "";
+        question32.text = "Какому образцу бронетехники соответствует данный силуэт?";
         question32.picture = R.drawable.picture4_2;
         question32.answer1 = "ИС-3 (СССР)";
         question32.answer2 = "Т-44 (СССР)";
@@ -452,7 +452,7 @@ public class FillDB implements Runnable{
         Question question33 = new Question();
         question33.id = 32;
         question33.id_Test = 3;
-        question33.text = "";
+        question33.text = "Какому образцу бронетехники соответствует данный силуэт?";
         question33.picture = R.drawable.picture4_3;
         question33.answer1 = "М60А2 (США)";
         question33.answer2 = "CV-33 (Италия)";
@@ -467,7 +467,7 @@ public class FillDB implements Runnable{
         Question question34 = new Question();
         question34.id = 33;
         question34.id_Test = 3;
-        question34.text = "";
+        question34.text = "Какому образцу бронетехники соответствует данный силуэт?";
         question34.picture = R.drawable.picture4_4;
         question34.answer1 = "Тype 90 (Япония)";
         question34.answer2 = "ZTZ-99 (Китай)";
@@ -481,7 +481,7 @@ public class FillDB implements Runnable{
         Question question35 = new Question();
         question35.id = 34;
         question35.id_Test = 3;
-        question35.text = "";
+        question35.text = "Какому образцу бронетехники соответствует данный силуэт?";
         question35.picture = R.drawable.picture4_5;
         question35.answer1 = "Vickers Mk E (Великобритания)";
         question35.answer2 = "М14/41 (Италия)";
@@ -495,7 +495,7 @@ public class FillDB implements Runnable{
         Question question36 = new Question();
         question36.id = 35;
         question36.id_Test = 3;
-        question36.text = "";
+        question36.text = "Какому образцу бронетехники соответствует данный силуэт?";
         question36.picture = R.drawable.picture4_6;
         question36.answer1 = "Altay MBT (Турция)";
         question36.answer2 = "Bernardini-X1A2 (Бразилия)";
@@ -509,7 +509,7 @@ public class FillDB implements Runnable{
         Question question37 = new Question();
         question37.id = 36;
         question37.id_Test = 3;
-        question37.text = "";
+        question37.text = "Какому образцу бронетехники соответствует данный силуэт?";
         question37.picture = R.drawable.picture4_7;
         question37.answer1 = "Pz.Kpfw.IV (Германия)";
         question37.answer2 = "Marmon-Herrington MTLS-1GI4 (США)";
@@ -523,7 +523,7 @@ public class FillDB implements Runnable{
         Question question38 = new Question();
         question38.id = 37;
         question38.id_Test = 3;
-        question38.text = "";
+        question38.text = "Какому образцу бронетехники соответствует данный силуэт?";
         question38.picture = R.drawable.picture4_8;
         question38.answer1 = "Leopard 2А3 (ФРГ)";
         question38.answer2 = "Vijayanta Mark 1 (Индия)";
@@ -537,7 +537,7 @@ public class FillDB implements Runnable{
         Question question39 = new Question();
         question39.id = 38;
         question39.id_Test = 3;
-        question39.text = "";
+        question39.text = "Какому образцу бронетехники соответствует данный силуэт?";
         question39.picture = R.drawable.picture4_9;
         question39.answer1 = "Leclerc АМХ-56 (Франция)";
         question39.answer2 = "PT-91 Twardy (Польша)";
@@ -552,7 +552,7 @@ public class FillDB implements Runnable{
         Question question40 = new Question();
         question40.id = 39;
         question40.id_Test = 3;
-        question40.text = "";
+        question40.text = "Какому образцу бронетехники соответствует данный силуэт?";
         question40.picture = R.drawable.picture4_10;
         question40.answer1 = "Ramses II (Египет)";
         question40.answer2 = "Al Khalid (Пакистан)";

@@ -1,8 +1,10 @@
 package com.hfad.tanktests.activities;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -10,10 +12,9 @@ import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.hfad.tanktests.R;
 import com.hfad.tanktests.adapters.AdapterRecViewMenu;
-import com.hfad.tanktests.listeners.RecyclerItemClickListener;
 import com.hfad.tanktests.interfaces.MenuInterface;
+import com.hfad.tanktests.listeners.RecyclerItemClickListener;
 import com.hfad.tanktests.presenters.MenuPresenter;
-import com.hfad.tanktests.utils.ContextApp;
 
 public class MenuActivity extends MvpAppCompatActivity implements MenuInterface {
 
@@ -42,10 +43,25 @@ public class MenuActivity extends MvpAppCompatActivity implements MenuInterface 
     @Override
     public void initRecyclerViewMenu() {
 
-        layoutManager = new LinearLayoutManager(ContextApp.getInstance());
-        recyclerViewMenu.setLayoutManager(layoutManager);
+        // проверка конфигурации для разного отображения
+        Configuration configuration = getResources().getConfiguration();
 
-        adapterRecViewMenu = new AdapterRecViewMenu(MenuPresenter.getTestList(), ContextApp.getInstance());
+        // портретная
+        if (configuration.orientation == Configuration.ORIENTATION_PORTRAIT){
+
+            layoutManager = new LinearLayoutManager(this);
+            recyclerViewMenu.setLayoutManager(layoutManager);
+        }
+
+        //альбомная
+        if (configuration.orientation == Configuration.ORIENTATION_LANDSCAPE){
+
+            layoutManager = new GridLayoutManager(this, 2); // две колонки
+            recyclerViewMenu.setLayoutManager(layoutManager);
+        }
+
+        // задаем адаптер
+        adapterRecViewMenu = new AdapterRecViewMenu(MenuPresenter.getTestList(), this);
         recyclerViewMenu.setAdapter(adapterRecViewMenu);
     }
 
