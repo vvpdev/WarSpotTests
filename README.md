@@ -6,5 +6,5 @@
 
 minSDK = 24
 
-![](Screenshots/WarSpotTests1.png)
+![](https://github.com/vvpdev/Screenshots/WarSpotTests1.png)
 
