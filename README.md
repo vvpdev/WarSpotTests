@@ -5,3 +5,6 @@
 Стек: Room, Moxy
 
 minSDK = 24
+
+![alt text](screenshots/WarSpotTests1.png "")
+
