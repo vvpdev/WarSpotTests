@@ -6,5 +6,5 @@
 
 minSDK = 24
 
-![alt text](screenshots/WarSpotTests1.png "")
+![alt text](Screenshots/WarSpotTests1.png "")
 
