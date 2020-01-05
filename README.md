@@ -6,6 +6,6 @@
 
 minSDK = 24
 
-<img src="Screenshots/WarSpotTests1.png" width="100" height="150"/>
+
 
 
